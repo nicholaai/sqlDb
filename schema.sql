@@ -1,0 +1,23 @@
+CREATE TABLE people (
+  id BIGINT NOT NULL PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL
+)
+
+CREATE TABLE addresses (
+  id BIGINT NOT NULL PRIMARY KEY,
+  person_id BIGINT NOT NULL REFERENCES people(id),
+  line_1 VARCHAR(255) NOT NULL,
+  line_2 VARCHAR(255),
+  city VARCHAR(255) NOT NULL,
+  state CHAR(2) NOT NULL,
+  zip VARCHAR(255) NOT NULL,
+  country VARCHAR(255) NOT NULL
+)
+
+CREATE TABLE phone_numbers (
+  id BIGINT NOT NULL PRIMARY KEY,
+  person_id BIGINT NOT NULL REFERENCES people(id),
+  number CHAR(10) NOT NULL,
+  extension VARCHAR(10)
+)
